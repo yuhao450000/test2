@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <title>设备联动</title>
+    <title>仓库编号：No150812</title>
     <style>
         *{margin:0px;padding:0px;}
         body{
@@ -13,12 +13,12 @@
             font-size: 13px;
         }
         .content{
-            margin:1px;  //页边距
+            margin:1px;
             padding:1px;
         }
         .title{
             margin: 10px 12px 5px 12px;
-            background-color: #FFFFF0; 
+            background-color: #FFFFFF; 
             text-align: center;
             padding: 7px 0;
             box-shadow: 3px 3px 3px #e1e1e1;
@@ -26,7 +26,7 @@
         .title span{
             color: #000000;
             /*color: #229B32;*/
-            font-size: 20px;
+            font-size: 18px;
             /*font-weight: bolder;*/
             position: relative;
         }
@@ -58,19 +58,29 @@
         .switrgbhow table tr td img{
             height: 70px;
         }
+        .garagehow{
+            margin: 5px 12px;
+            height: 414px;
+            background-color: #FFFFFF;
+            text-align: center;
+            box-shadow: 3px 3px 3px #e1e1e1;
+        }        
+        .garagehow table tr td img{
+            height: 70px;
+        }
         .humihis{
             margin: 5px 12px;
             height: 215px;
             background-color: #FFFFFF;
             text-align: center;
             box-shadow: 3px 3px 3px #e1e1e1;
-        }
+        } 
     </style>
 </head>
 <body>
     <div class="content">
         <div class="title">
-          <span>温湿度实时检测</span>
+          <span>仓库温湿度实时检测</span>
         </div>        
         <div class="temphumishow">
             <table width="100%" height="94px">
@@ -88,6 +98,21 @@
                     <td valign="middle"><img id="switchbtn" src="./image/03-turn-on.svg" alt=""><br/><span id="switchspan">开</span></td>
                     <!-- <td valign="middle"><hr class="hrline" size="80" /></td> -->
                     <td valign="middle"><img id="rgbimgid" src="./image/02-red.svg" alt=""><br/><span>温度阀值</span></td>
+                </tr>                
+            </table>
+        </div>
+        <div class="garagehow">  
+            <table width="100%">
+                <tr align="left" height="314px">
+                    
+					<td valign="left"><br/><span >
+					<li>1、闪点＜28℃的液体（如苯）</li> 
+					<li>2、爆炸下限＜10%的气体，以及受到水或空气中水蒸气的作用，能产生爆炸下限＜10%气体的固体物质（如、硼氢化钠） </li> 
+					<li>3、常温下能自行分解或在空气中氧化即能导致迅速自然或爆炸的物质（如五氧化二磷、氯化亚砜） </li> 
+					<li>4、常温下受到水或空气中水蒸气的作用能产生可燃气体并引起燃烧或爆炸的物质（如金属钠、镁） </li> 
+					<li>5、遇酸、受热、撞击、摩擦以及与有机物或硫磺等易燃的无机物，极易引起燃烧或爆炸的强氧化剂（如双氧水） </li> 
+					<li>6、受撞击、摩擦或与氧化剂、有机物接触时能引起燃烧或爆炸的物质（如重铬酸钾）</span></td>
+					<td valign="right"><br/><span class="humicls" id="garagepan">仓库物品类型：一类</span></td>
                 </tr>                
             </table>
         </div>
@@ -209,21 +234,7 @@
             }
             client.publish(topic, commond);
         });
-		$("#rgbimgid").click(function() {
-            var topic = device_id+'/in';
-            var commond;
-            var swtimg = $("#rgbimgid").attr("src");
-            if("./image/03-turn-on.svg" == swtimg){
-                commond = '{"device_switch":false}';
-                $("#rgbimgid").attr("src", "./image/03-turn-off.svg");
-                $("#rgbimgid").text("关");
-            }else{
-                commond = '{"device_switch":true}';
-                $("#switchbtn").attr("src", "./image/03-turn-on.svg");
-                $("#rgbimgid").text("开");
-            }
-            client.publish(topic, commond);
-        });
+
         function led_red() {
             var topic = device_id+'/in';
             var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
@@ -243,25 +254,25 @@
         }
     }
 
-    // 日志打印在页面的部分    
+     //日志打印在页面的部分    
     // var i = 0;
-    // console.log = (function(old_funct, div_log) {
-    //     return function(text) {
-    //         old_funct(text);
-    //         var p = '';
-    //         if (i%2 == 0)
-    //             p = '<p>';
-    //         else
-    //             p = '<p class=\'gray\'>';
+     //console.log = (function(old_funct, div_log) {
+     //    return function(text) {
+      //       old_funct(text);
+      //       var p = '';
+      //       if (i%2 == 0)
+      //           p = '<p>';
+      //       else
+      //           p = '<p class=\'gray\'>';
 
-    //         if (typeof text === "object")
-    //             div_log.innerHTML += p + JSON.stringify(text) + '</p>';
-    //         else
-    //             div_log.innerHTML += p + text + '</p>';
+      //       if (typeof text === "object")
+      //           div_log.innerHTML += p + JSON.stringify(text) + '</p>';
+      //       else
+      ///           div_log.innerHTML += p + text + '</p>';
 
-    //         div_log.scrollTop = div_log.scrollHeight;
-    //         i += 1;
-    //     };
+       //      div_log.scrollTop = div_log.scrollHeight;
+       //      i += 1;
+     //    };
     // } (console.log.bind(console), document.getElementById("debug")));
     // console.error = console.debug = console.info =  console.log;
 
