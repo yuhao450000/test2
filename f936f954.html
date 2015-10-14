@@ -98,7 +98,7 @@
                 <tr align="center" height="114px">
                     <td valign="middle"><img id="switchbtn" src="./image/03-turn-on.svg" alt=""><br/><span id="switchspan">开</span></td>
                     <!-- <td valign="middle"><hr class="hrline" size="80" /></td> -->
-                    <td valign="middle"><img id="rgbimgid" src="./image/02-red.svg" alt=""><br/><span>温度阀值</span></td>
+                    <td valign="middle"><img id="rgbimgid" src="./image/02-red.svg" alt=""><br/>监测点编号<span id="stationNoid">100</span></td>
                 </tr>                
             </table>
         </div>
@@ -107,12 +107,12 @@
                 <tr align="left" height="314px">
                     
 					<td valign="left"><br/><span >
-				 <!--	<li>1、闪点＜28℃的液体（如苯）</li> 
+				 	<li>1、闪点＜28℃的液体（如苯）</li> 
 					<li>2、爆炸下限＜10%的气体，以及受到水或空气中水蒸气的作用，能产生爆炸下限＜10%气体的固体物质（如、硼氢化钠） </li> 
 					<li>3、常温下能自行分解或在空气中氧化即能导致迅速自然或爆炸的物质（如五氧化二磷、氯化亚砜） </li> 
 					<li>4、常温下受到水或空气中水蒸气的作用能产生可燃气体并引起燃烧或爆炸的物质（如金属钠、镁） </li> 
 					<li>5、遇酸、受热、撞击、摩擦以及与有机物或硫磺等易燃的无机物，极易引起燃烧或爆炸的强氧化剂（如双氧水） </li> 
-					<li>6、受撞击、摩擦或与氧化剂、有机物接触时能引起燃烧或爆炸的物质（如重铬酸钾）</span></td>-->
+					<li>6、受撞击、摩擦或与氧化剂、有机物接触时能引起燃烧或爆炸的物质（如重铬酸钾）</span></td>
 					<td valign="right"><br/><span class="humicls" id="garagepan">仓库物品类型：一类</span></td>
                 </tr>                
             </table>
@@ -205,6 +205,8 @@
                 $("#tempid").text(tempval+"℃");
                 // 显示湿度
                 $("#humiid").text(msgjson.dht11_humidity+'%');
+				$("#stationNoid").text(msgjson.stationNo);
+				//
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
                 if(tempval > "29"){
                     led_red();
