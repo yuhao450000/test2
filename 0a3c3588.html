@@ -38,7 +38,7 @@
             box-shadow: 3px 3px 3px #e1e1e1;
         }
         .temphumishow table tr td img{
-            height: 70px;
+            height: 60px;
         }
         .tempcls{
             font-size: 30px;
@@ -60,17 +60,17 @@
             box-shadow: 3px 3px 3px #e1e1e1;
         }        
         .switrgbhow table tr td img{
-            height: 70px;
+            height: 60px;
         }
         .smokeshow{
             margin: 5px 12px;
-            height: 114px;
+            height: 104px;
             background-color: #FFFFFF;
             text-align: center;
             box-shadow: 3px 3px 3px #e1e1e1;
         }        
         .smokeshow table tr td img{
-            height: 70px;
+            height: 60px;
 		}
 		.garagehow{
             margin: 5px 12px;
@@ -80,7 +80,7 @@
             box-shadow: 3px 3px 3px #e1e1e1;
         }        
         .garagehow table tr td img{
-            height: 70px;
+            height: 60px;
         }
         .humihis{
             margin: 5px 12px;
@@ -124,7 +124,7 @@
                 <tr align="center" height="114px">
                     <td valign="middle" align="right"><img src="./image/04-smoke.svg" alt=""></td>
                     <td valign="middle" align="left"><span>烟雾(可燃<br/>气体)浓度</span><br/>&nbsp;&nbsp;<span class="smokecls" id="smokeid">28%</span></td>
-                    <td valign="middle"><img id="rgbimgid" src="./image/02-red.svg" alt=""><br/>监测点编号<span id="stationNoid">100</span></td>
+                 
                 </tr>                
             </table>
         </div>
@@ -237,6 +237,7 @@
             msgjson = $.parseJSON(message.payloadString);
             // console.log('温度 ' +  msgjson.dht11_temperature);
             var tempval = msgjson.dht11_temperature;
+			var smokeval = msgjson.smoke;
             // console.log('温度2 ' +  tempval);
             if("undefined" != typeof(tempval)){
                 // 显示温度
@@ -246,16 +247,14 @@
 				$("#stationNoid").text(msgjson.stationNo);
 				//
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
-                if(tempval > "29"){
+                if(smokeval > $("#SmokeAlarmThresholdid").val()){
                     led_red();
                     $("#rgbimgid").attr("src", "./image/02-red.svg");
-                }else if(tempval < "30" && (tempval > "19")){
+                }else {
                     led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
-                }else if(tempval < "20"){
-                    led_yellow();
-                    $("#rgbimgid").attr("src", "./image/02-yellow.svg");
                 }
+                
             }
         }
 
