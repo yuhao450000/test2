@@ -163,7 +163,6 @@
 <script src="./js/mqttws31.js"></script>
 <script src="./js/jquery-2.1.3.js"></script>
 <script>
-
     // 从url中获取某个参数的值
     function getParameterByName(name) {
         var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
@@ -237,9 +236,6 @@
             msgjson = $.parseJSON(message.payloadString);
             // console.log('温度 ' +  msgjson.dht11_temperature);
             var tempval = msgjson.dht11_temperature;
-			var smokeval = msgjson.msgjson.smoke;
-			
-			
             // console.log('温度2 ' +  tempval);
             if("undefined" != typeof(tempval)){
                 // 显示温度
@@ -247,21 +243,18 @@
                 // 显示湿度
                 $("#humiid").text(msgjson.dht11_humidity+'%');
 				$("#stationNoid").text(msgjson.stationNo);
-				//显示站点编号
-				$("#smokeid").text(msgjson.smoke+'%');
-				//显示站点编号
 				//
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
-                if(smokeval > $("#SmokeAlarmThresholdid").val()){
+                if(tempval > "29"){
                     led_red();
                     $("#rgbimgid").attr("src", "./image/02-red.svg");
-                }else{//if(smokeval < "30" && (smokeval > "19")){
+                }else if(tempval < "30" && (tempval > "19")){
                     led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
-                }//else if(smokeval < "20"){
-                  //  led_yellow();
-                   // $("#rgbimgid").attr("src", "./image/02-yellow.svg");
-               // }
+                }else if(tempval < "20"){
+                    led_yellow();
+                    $("#rgbimgid").attr("src", "./image/02-yellow.svg");
+                }
             }
         }
 		$("#SmokeAlarmThresholdConfireid").click(function(){
