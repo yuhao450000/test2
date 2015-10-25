@@ -276,7 +276,16 @@
             client.publish(topic, commond);
         });/**/
  // 确定按钮的事件
-
+		$("#SmokeAlarmThresholdConfireid").click(function(){
+			alert( $("#SmokeAlarmThresholdid").val());
+			if(smokeval > $("#SmokeAlarmThresholdid").val()){
+                    //led_red();
+                    $("#rgbimgid").attr("src", "./image/02-red.svg");
+                }else{//if(smokeval < "30" && (smokeval > "19")){
+                    //led_green();
+                    $("#rgbimgid").attr("src", "./image/02-green.svg");
+                }//else if(smokeval < "20"){
+  });
         function led_red() {
             var topic = device_id+'/in';
             var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
