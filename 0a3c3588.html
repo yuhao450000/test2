@@ -52,6 +52,10 @@
             font-size: 30px;
             color: #515e4e; 
         }
+		.StorageTypecls{
+            font-size: 20px;
+            color: #515e4e; 
+        }
         .switrgbhow{
             margin: 5px 12px;
             height: 114px;
@@ -139,17 +143,26 @@
             </table>
         </div> 
         <div class="garagehow">  
-            <table width="100%">
-                <tr align="left" height="314px">
-					<td valign="left"><br/><span >
-				 	<li>1、闪点＜28℃的液体（如苯）</li> 
-					<li>2、爆炸下限＜10%的气体，以及受到水或空气中水蒸气的作用，能产生爆炸下限＜10%气体的固体物质（如、硼氢化钠） </li> 
-					<li>3、常温下能自行分解或在空气中氧化即能导致迅速自然或爆炸的物质（如五氧化二磷、氯化亚砜） </li> 
-					<li>4、常温下受到水或空气中水蒸气的作用能产生可燃气体并引起燃烧或爆炸的物质（如金属钠、镁） </li> 
-					<li>5、遇酸、受热、撞击、摩擦以及与有机物或硫磺等易燃的无机物，极易引起燃烧或爆炸的强氧化剂（如双氧水） </li> 
-					<li>6、受撞击、摩擦或与氧化剂、有机物接触时能引起燃烧或爆炸的物质（如重铬酸钾）</span></td>
+            <table width="100%">				 
+				<tr align="middle" height="54px">
 					<td valign="right"><br/><span class="humicls" >仓库物品类型：<span id="garagepan">一类</span></span></td>
-                </tr>                
+					
+                </tr> 
+                <tr align="middle" height="184px">
+					<td valign="left" class="StorageTypecls"> 选择危险品类型：<br/>
+						<select size = 9 id = StorageType multiple class="StorageTypecls">
+							<option value = "1"> 第1类 爆炸品
+							<option value = "2"> 第2类 压缩气体和液化气体 
+							<option value = "3"> 第3类 易燃液体
+							<option value = "4"> 第4类 易燃固体、自然物品<br/>和遇湿易燃物品
+							<option value = "5"> 第5类 氧化剂和有机过氧化物
+							<option value = "6"> 第6类 毒害品和感染性物品
+							<option value = "7"> 第7类 放射性物品
+							<option value = "8"> 第8类 腐蚀品
+							<option value = "9"> 第9类 杂类
+					</td>
+				</tr> 
+               
             </table>
         </div>
         <!--<div class="humihis">
@@ -274,7 +287,7 @@
                 $("#switchspan").text("开");
             }
             client.publish(topic, commond);
-        });/**/
+        });/*
  // 确定按钮的事件
  
 		$("#SmokeAlarmThresholdConfireid").click(function(){
@@ -286,7 +299,7 @@
                     //led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
                 }//else if(smokeval < "20"){
-  });
+  });*/
         function led_red() {
             var topic = device_id+'/in';
             var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
