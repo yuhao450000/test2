@@ -259,11 +259,11 @@
                 if(smokeval > $("#SmokeAlarmThresholdid").val()){
                     led_red();
                     $("#rgbimgid").attr("src", "./image/02-red.svg");
-					$("#stateid").text(烟雾(可燃气体)浓度过高);
+					$("#stateid").text("烟雾(可燃气体)浓度过高");
                 }else {
                     led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
-					$("#stateid").text(正常);
+					$("#stateid").text("正常");
                 }
                 
             }
