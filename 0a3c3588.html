@@ -246,7 +246,8 @@
             msgjson = $.parseJSON(message.payloadString);
             // console.log('温度 ' +  msgjson.dht11_temperature);
             var tempval = msgjson.dht11_temperature;
-			var smokeval = msgjson.smoke/200;
+			var smokeval = msgjson.smoke;
+			smokeval = smokeval/"200";
             // console.log('温度2 ' +  tempval);
             if("undefined" != typeof(tempval)){
                 // 显示温度
@@ -361,6 +362,7 @@
 		$("#garagepan").text(x.options[x.selectedIndex].text);
 
   });*/	
+
 </script>
 
 </body>
