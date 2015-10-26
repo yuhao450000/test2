@@ -246,7 +246,7 @@
             msgjson = $.parseJSON(message.payloadString);
             // console.log('温度 ' +  msgjson.dht11_temperature);
             var tempval = msgjson.dht11_temperature;
-			var smokeval = msgjson.smoke;
+			var smokeval = msgjson.smoke/200;
             // console.log('温度2 ' +  tempval);
             if("undefined" != typeof(tempval)){
                 // 显示温度
@@ -254,7 +254,7 @@
                 // 显示湿度
                 $("#humiid").text(msgjson.dht11_humidity+'%');
 				$("#stationNoid").text(msgjson.stationNo);
-				$("#smokeid").text(smokeval/200+"%");
+				$("#smokeid").text(smokeval+"%");
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
                 if(smokeval > $("#SmokeAlarmThresholdid").val()){
                     led_red();
