@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <title>仓库环境状态11</title>
+    <title>仓库环境状态12</title>
     <style>
         *{margin:0px;padding:0px;}
         body{
@@ -68,7 +68,7 @@
         }
         .smokeshow{
             margin: 5px 12px;
-            height: 154px;
+            height: 144px;
             background-color: #FFFFFF;
             text-align: center;
             box-shadow: 3px 3px 3px #e1e1e1;
@@ -78,7 +78,7 @@
 		}
 		.garagehow{
             margin: 5px 12px;
-            height: 114px;
+            height: 104px;
             background-color: #FFFFFF;
             text-align: center;
             box-shadow: 3px 3px 3px #e1e1e1;
@@ -125,7 +125,7 @@
 				
 		<div class="switrgbhow">
             <table width="100%">
-                <tr align="center" height="114px">
+                <tr align="center" height="104px">
                     <td valign="middle" align="right"><img src="./image/04-smoke.svg" alt=""></td>
                     <td valign="middle" align="left"><span>烟雾(可燃<br/>气体)浓度</span><br/>&nbsp;&nbsp;<span class="smokecls" id="smokeid">28%</span></td>
                     <td valign="middle" align="left"><span>监测点状态：</span><br/>&nbsp;&nbsp;<span class="smokecls" id="stateid">正常</span></td>
@@ -134,17 +134,24 @@
         </div>
         <div class="smokeshow">  
             <table width="100%">
-                <tr align="center" height="84px">
+                <tr align="center" height="34px">
 					<td valign="left">烟雾（可燃气体）浓度报警阀值</td>
-					<td valign="left"><span><INPUT class="smokecls" TYPE = "number" id = "SmokeAlarmThresholdid" VALUE= "90" min="0" max="9999"></span></td>
+					<td valign="left"><span><INPUT  TYPE = "number" id = "SmokeAlarmThresholdid" VALUE= "50" min="0" max="999" maxlength="3" size="3"></span></td>
 					<td valign="left"><span id="OKspan"><span><INPUT class="smokecls" TYPE = "submit" id = "SmokeAlarmThresholdConfireid" VALUE = "确定"></span></span></td>
+				 </tr>	
+				
+				<tr align="center" height="34px">
+
+					<td valign="left">湿度报值</td>
+					<td valign="left"><span><INPUT  TYPE = "number" id = "input_humidity_thr_id" VALUE= "50" min="0" max="999"maxlength="3" size="3"></span></td>
+
 					
                 </tr> 
-				<tr align="center" height="84px">
+				<tr align="center" height="34px">
 				
-				<td>类型：<span id="fire_type_id">0</span></td>		
-				<td>湿度阀值：<span><INPUT  TYPE = "number" id = "dht11_humidity_thr_id" VALUE= "40" min="0" max="9999"></span></td>
-				<td>烟雾阀值：<span id="smoke_thr_id">0</span></td>
+				<td>当前设备类型：<span id="fire_type_id">0</span></td>		
+				<td>当前设备湿度阀值：<span id="dht11_humidity_thr_id">0</span></td>
+				<td>当前设备烟雾阀值：<span id="smoke_thr_id">0</span></td>
 				</tr> 
             </table>
         </div> 
@@ -257,6 +264,7 @@
 			var smoke_thr = msgjson.smoke_thr;
 			var dht11_humidity_thr= msgjson.dht11_humidity_thr;
 			var fire_type = msgjson.fire_type;
+			fire_type=fire_type+'1';
             // console.log('温度2 ' +  tempval);
             if("undefined" != typeof(tempval)){
                 // 显示温度
@@ -266,10 +274,10 @@
 				$("#stationNoid").text(msgjson.stationNo);
 				$("#smokeid").text(smokeval+"%");
 				//$("#SmokeAlarmThresholdid").value(smoke_thr+"%");
-				$("#fire_type_id").text(fire_type);
+				$("#fire_type_id").text('第'+fire_type+'类');
 				$("#smoke_thr_id").text(smoke_thr);
 				
-				//$("#dht11_humidity_thr_id").value(dht11_humidity_thr);
+				$("#dht11_humidity_thr_id").text(dht11_humidity_thr);
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
               /* if(smokeval > $("#SmokeAlarmThresholdid").val()){
                     led_red();
@@ -301,28 +309,7 @@
             }
             client.publish(topic, commond);
         });
-	/*		var x=document.getElementById("StorageType")
-	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
-	var dht11_humidity_thr =$("#dht11_humidity_thr_id").val();
-	var fire_types=parseInt(x.selectedIndex);
-	
-	
-	var s1= '{"smoke_thr":';
-	var s2= ' ,"fire_type":';
-	var s3= ' ,"dht11_humidity_thr":';
-	var s4= '}';
-	
-	
-	 	commond1 = s1.concat(SmokeAlarmThreshold);
-		commond2 = commond1.concat(s2);
-		commond3 = commond2.concat(fire_types);
-		commond4 = commond3.concat(s3);
-		commond5 = commond4.concat(dht11_humidity_thr);
-		commond6 = commond5.concat(s4);
-		*/
-		// alert( commond6);
 			
-			//client.publish(topic, commond6);
         /*
  // 确定按钮的事件
  
@@ -335,7 +322,7 @@
                     //led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
                 }//else if(smokeval < "20"){
-  });
+  });*/
   $("#SmokeAlarmThresholdConfireid").click(function(){
   //var smokeval="20";
     //alert( $("#SmokeAlarmThresholdid").val());
@@ -359,10 +346,10 @@
 		commond5 = commond4.concat(dht11_humidity_thr);
 		commond6 = commond5.concat(s4);
 		
-		 alert( commond6);
+		// alert( commond6);
 		 client.publish(topic, commond6);
 		 
-  });       */
+  });       
 		
 		
 		
@@ -413,8 +400,21 @@
 
 
 <script>
- /*	 $("#switchbtn").click(function() {
-            var topic = device_id+'/in';
+
+
+
+
+   /*	$("#switchbtn").click(function() {
+ var dht11_humidity_thr=89;
+
+
+$("#dht11_humidity_thr_id").text(dht11_humidity_thr);
+ 
+ });
+ 
+ 
+ 
+           var topic = device_id+'/in';
             var commond;
             var swtimg = $("#switchbtn").attr("src");
             if("./image/03-turn-on.svg" == swtimg){
