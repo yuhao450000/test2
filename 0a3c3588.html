@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <title>仓库环境状态12</title>
+    <title>仓库环境状态13</title>
     <style>
         *{margin:0px;padding:0px;}
         body{
@@ -264,7 +264,7 @@
 			var smoke_thr = msgjson.smoke_thr;
 			var dht11_humidity_thr= msgjson.dht11_humidity_thr;
 			var fire_type = msgjson.fire_type;
-			fire_type=fire_type+'1';
+			fire_type=fire_type;
             // console.log('温度2 ' +  tempval);
             if("undefined" != typeof(tempval)){
                 // 显示温度
@@ -330,7 +330,7 @@
 	var x=document.getElementById("StorageType")
 	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
 	var dht11_humidity_thr =$("#input_humidity_thr_id").val();
-	var fire_types=parseInt(x.selectedIndex);
+	var fire_types=parseInt(x.selectedIndex+"1");
 	
 	
 	var s1= '{"smoke_thr":';
