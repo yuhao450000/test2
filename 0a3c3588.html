@@ -303,8 +303,26 @@
 	
 			
             client.publish(topic, commond); 
-			
-					commond = '{"smoke_thr":20,  "fire_type":3}';
+			var x=document.getElementById("StorageType")
+	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
+	var dht11_humidity_thr =$("#dht11_humidity_thr_id").val();
+	var fire_types=parseInt(x.selectedIndex);
+	
+	
+	var s1= '{"smoke_thr":';
+	var s2= ' ,"fire_type":';
+	var s3= ' ,"dht11_humidity_thr":';
+	var s4= '}';
+	
+	
+	 	commond1 = s1.concat(SmokeAlarmThreshold);
+		commond2 = commond1.concat(s2);
+		commond3 = commond2.concat(fire_types);
+		commond4 = commond3.concat(s3);
+		commond5 = commond4.concat(dht11_humidity_thr);
+		commond = commond5.concat(s4);
+		
+		 alert( commond);
 			
 			client.publish(topic, commond);
         });/*
@@ -319,7 +337,7 @@
                     //led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
                 }//else if(smokeval < "20"){
-  });*/
+  });
   $("#SmokeAlarmThresholdConfireid").click(function(){
   //var smokeval="20";
     //alert( $("#SmokeAlarmThresholdid").val());
@@ -346,7 +364,7 @@
 		 alert( commond6);
 		 client.publish(topic, commond6);
 		 
-  });       
+  });       */
 		
 		
 		
