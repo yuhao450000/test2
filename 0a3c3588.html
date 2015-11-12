@@ -264,13 +264,13 @@
                 $("#humiid").text(msgjson.dht11_humidity+'%');
 				$("#stationNoid").text(msgjson.stationNo);
 				$("#smokeid").text(smokeval+"%");
-				//$("#SmokeAlarmThresholdid").value(smoke_thr+"%");
-				//$("#fire_type_id").text(fire_type);
+				$("#SmokeAlarmThresholdid").value(smoke_thr+"%");
+				$("#fire_type_id").text(fire_type);
 				
 				
 				//$("#dht11_humidity_thr_id").text(dht11_humidity_thr+"%");
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
-               if(smokeval > $("#SmokeAlarmThresholdid").val()){
+              /* if(smokeval > $("#SmokeAlarmThresholdid").val()){
                     led_red();
                     $("#rgbimgid").attr("src", "./image/02-red.svg");
 					$("#stateid").text("烟雾(可燃气体)浓度过高");
@@ -278,7 +278,7 @@
                    led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
 					$("#stateid").text("正常");
-                }
+                }*/
                 
             }
         }
@@ -299,7 +299,7 @@
                 $("#switchspan").text("开");
             }
 			
-			//commond = '{"smoke_thr":$("#SmokeAlarmThresholdid").value(),  "fire_type":$("#StorageType").value()}';
+			//commond = '{"smoke_thr":20,  "fire_type":3}';
 			
             client.publish(topic, commond); 
 			
