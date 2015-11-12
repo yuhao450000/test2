@@ -292,15 +292,15 @@
 				
 				$("#dht11_humidity_thr_id").text(dht11_humidity_thr);
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
-              /* if(smokeval > $("#SmokeAlarmThresholdid").val()){
-                    led_red();
+               if(smokeval > $("#smoke_thr_id").text()){
+                    //led_red();
                     $("#rgbimgid").attr("src", "./image/02-red.svg");
 					$("#stateid").text("烟雾(可燃气体)浓度过高");
                 }else {
-                   led_green();
+                   //led_green();
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
 					$("#stateid").text("正常");
-                }*/
+                }
                 
             }
         }
