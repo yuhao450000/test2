@@ -142,8 +142,8 @@
                 </tr> 
 				<tr align="center" height="84px">
 				
-				<td>类型：<span id="fire_type_id">0</span></td>
-				<td>湿度阀值：<span id="dht11_humidity_thr_id">0</span></td>
+				<td>类型：<span id="fire_type_id">0</span></td>		
+				<td>湿度阀值：<span><INPUT  TYPE = "number" id = "dht11_humidity_thr_id" VALUE= "40" min="0" max="9999"></span></td>
 				<td>烟雾阀值：<span id="smoke_thr_id">0</span></td>
 				</tr> 
             </table>
@@ -269,7 +269,7 @@
 				$("#fire_type_id").text(fire_type);
 				$("#smoke_thr_id").text(smoke_thr);
 				
-				//$("#dht11_humidity_thr_id").text(dht11_humidity_thr+"%");
+				$("#dht11_humidity_thr_id").value(dht11_humidity_thr);
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
               /* if(smokeval > $("#SmokeAlarmThresholdid").val()){
                     led_red();
@@ -320,7 +320,37 @@
                     $("#rgbimgid").attr("src", "./image/02-green.svg");
                 }//else if(smokeval < "20"){
   });*/
-        function led_red() {
+  $("#SmokeAlarmThresholdConfireid").click(function(){
+  //var smokeval="20";
+    //alert( $("#SmokeAlarmThresholdid").val());
+	var x=document.getElementById("StorageType")
+	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
+	var dht11_humidity_thr =$("#dht11_humidity_thr_id").val();
+	var fire_types=parseInt(x.selectedIndex);
+	
+	
+	var s1= '{"smoke_thr":';
+	var s2= ' ,"fire_type":';
+	var s3= ' ,"dht11_humidity_thr":';
+	var s4= '}';
+	
+	
+	 	commond1 = s1.concat(SmokeAlarmThreshold);
+		commond2 = commond1.concat(s2);
+		commond3 = commond2.concat(fire_types);
+		commond4 = commond3.concat(s3);
+		commond5 = commond4.concat(dht11_humidity_thr);
+		commond6 = commond5.concat(s4);
+		
+		 alert( commond6);
+		 client.publish(topic, commond6);
+		 
+  });       
+		
+		
+		
+		
+		function led_red() {
             var topic = device_id+'/in';
             var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
             client.publish(topic, commond);
@@ -366,21 +396,11 @@
 
 
 <script>
- /* $("#SmokeAlarmThresholdConfireid").click(function(){
-  var smokeval="20";
-    alert( $("#SmokeAlarmThresholdid").val());
-	 if(smokeval > $("#SmokeAlarmThresholdid").val()){
-                    //led_red();
-                    $("#rgbimgid").attr("src", "./image/02-red.svg");
-                }else{//if(smokeval < "30" && (smokeval > "19")){
-                    //led_green();
-                    $("#rgbimgid").attr("src", "./image/02-green.svg");
-                }//else if(smokeval < "20"){
-  });
-  $("#StorageType").click(function(){
+ 
+ /* $("#StorageType").click(function(){
 			 var x=document.getElementById("StorageType")
-		//alert(x.options[x.selectedIndex].text)
-		$("#garagepan").text(x.options[x.selectedIndex].text);
+		alert(x.selectedIndex)
+		//$("#garagepan").text(x.options[x.selectedIndex].text);
 
   });*/	
 
