@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <title>仓库环境状态</title>
+    <title>仓库环境状态10</title>
     <style>
         *{margin:0px;padding:0px;}
         body{
@@ -300,11 +300,9 @@
                 $("#switchbtn").attr("src", "./image/03-turn-on.svg");
                 $("#switchspan").text("开");
             }
-			
-	
-			
+
             client.publish(topic, commond); 
-	/*	*/	var x=document.getElementById("StorageType")
+	/*		var x=document.getElementById("StorageType")
 	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
 	var dht11_humidity_thr =$("#dht11_humidity_thr_id").val();
 	var fire_types=parseInt(x.selectedIndex);
@@ -322,10 +320,10 @@
 		commond4 = commond3.concat(s3);
 		commond5 = commond4.concat(dht11_humidity_thr);
 		commond6 = commond5.concat(s4);
-		
+		*/
 		// alert( commond6);
 			
-			client.publish(topic, commond6);
+			//client.publish(topic, commond6);
         });/*
  // 确定按钮的事件
  
