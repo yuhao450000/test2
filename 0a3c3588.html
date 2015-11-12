@@ -68,7 +68,7 @@
         }
         .smokeshow{
             margin: 5px 12px;
-            height: 144px;
+            height: 60;
             background-color: #FFFFFF;
             text-align: center;
             box-shadow: 3px 3px 3px #e1e1e1;
@@ -84,8 +84,21 @@
             box-shadow: 3px 3px 3px #e1e1e1;
         }        
         .garagehow table tr td img{
-            height: 60px;
+            height: 100px;
         }
+		.confighow{
+            margin: 5px 12px;
+            height: 164px;
+            background-color: #FFFFFF;
+            text-align: center;
+            box-shadow: 3px 3px 3px #e1e1e1;
+        }        
+        .confighow table tr td img{
+            height: 164px;
+        }
+		
+		
+		
         .humihis{
             margin: 5px 12px;
             height: 215px;
@@ -134,33 +147,36 @@
         </div>
         <div class="smokeshow">  
             <table width="100%">
-                <tr align="center" height="34px">
-					<td valign="left">烟雾（可燃气体）浓度报警阀值</td>
-					<td valign="left"><span><INPUT  TYPE = "number" id = "SmokeAlarmThresholdid" VALUE= "50" min="0" max="999" maxlength="3" size="3"></span></td>
-					<td valign="left"><span id="OKspan"><span><INPUT class="smokecls" TYPE = "submit" id = "SmokeAlarmThresholdConfireid" VALUE = "确定"></span></span></td>
-				 </tr>	
+               
+				<tr align="center" height="44px">
 				
-				<tr align="center" height="34px">
-
-					<td valign="left">湿度报值</td>
-					<td valign="left"><span><INPUT  TYPE = "number" id = "input_humidity_thr_id" VALUE= "50" min="0" max="999"maxlength="3" size="3"></span></td>
-
-					
-                </tr> 
-				<tr align="center" height="34px">
-				
-				<td>当前设备类型：<span id="fire_type_id">0</span></td>		
+				<td>当前危险品类型：<span id="fire_type_id">0</span></td>		
 				<td>当前设备湿度阀值：<span id="dht11_humidity_thr_id">0</span></td>
 				<td>当前设备烟雾阀值：<span id="smoke_thr_id">0</span></td>
 				</tr> 
             </table>
         </div> 
 
-        <div class="garagehow">  
-            <table width="100%">				 
-                <tr align="middle" height="84px">
-					<td valign="left" class="StorageTypecls"> 危险品类型：<br/>
-						<select  id = "StorageType"  class="StorageTypecls">
+        <div class="confighow">  
+            <table width="100%">
+				<tr align="left" height="34px">
+					<td valign="left">湿度报值</td>
+					<td valign="left">烟雾浓度报警阀值</td>
+					
+					
+				 </tr>	
+				
+				<tr align="left" height="34px">
+
+					<td ><span><INPUT  TYPE = "number" id = "SmokeAlarmThresholdid" VALUE= "50" min="0" max="999" maxlength="3" size="3"></span></td>
+					<td ><span><INPUT  TYPE = "number" id = "input_humidity_thr_id" VALUE= "50" min="0" max="999"maxlength="3" size="3"></span></td>
+
+					
+                </tr> 	   
+				</table>		
+               
+				 危险品类型：
+		   <select  id = "StorageType"  class="StorageTypecls">
 							<option value = "1"> 第1类 爆炸品</option>
 							<option value = "2"> 第2类 压缩气体和液化气体 </option>
 							<option value = "3"> 第3类 易燃液体</option>
@@ -170,11 +186,8 @@
 							<option value = "7"> 第7类 放射性物品</option>
 							<option value = "8"> 第8类 腐蚀品</option>
 							<option value = "9"> 第9类 杂类</option>
-					</td>
-				</tr> 
-               
-            </table>
         </div>
+		<span id="OKspan"><span><INPUT class="smokecls" TYPE = "submit" id = "SmokeAlarmThresholdConfireid" VALUE = "设定参数"></span></span>
         <!--<div class="humihis">
             <div id="device_id"></div>
             <div id="debug"></div>
