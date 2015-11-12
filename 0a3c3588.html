@@ -329,7 +329,7 @@
 	var topic = device_id+'/in';
 	var x=document.getElementById("StorageType")
 	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
-	var dht11_humidity_thr =$("#dht11_humidity_thr_id").val();
+	var dht11_humidity_thr =$("#input_humidity_thr_id").val();
 	var fire_types=parseInt(x.selectedIndex);
 	
 	
@@ -400,39 +400,16 @@
 
 
 <script>
+/*
 
 
-
-
-   /*	$("#switchbtn").click(function() {
- var dht11_humidity_thr=89;
-
-
-$("#dht11_humidity_thr_id").text(dht11_humidity_thr);
- 
- });
- 
- 
- 
-           var topic = device_id+'/in';
-            var commond;
-            var swtimg = $("#switchbtn").attr("src");
-            if("./image/03-turn-on.svg" == swtimg){
-                commond = '{"device_switch":false}';
-                $("#switchbtn").attr("src", "./image/03-turn-off.svg");
-                $("#switchspan").text("关");
-            }else{
-                commond = '{"device_switch":true}';
-                $("#switchbtn").attr("src", "./image/03-turn-on.svg");
-                $("#switchspan").text("开");
-            }
-			
-	
-			
-            //client.publish(topic, commond); 
-	*/	/*var x=document.getElementById("StorageType")
+ $("#SmokeAlarmThresholdConfireid").click(function(){
+  //var smokeval="20";
+    //alert( $("#SmokeAlarmThresholdid").val());
+	var topic = device_id+'/in';
+	var x=document.getElementById("StorageType")
 	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
-	var dht11_humidity_thr =$("#dht11_humidity_thr_id").val();
+	var dht11_humidity_thr =$("#input_humidity_thr_id").val();
 	var fire_types=parseInt(x.selectedIndex);
 	
 	
@@ -450,10 +427,10 @@ $("#dht11_humidity_thr_id").text(dht11_humidity_thr);
 		commond6 = commond5.concat(s4);
 		
 		 alert( commond6);
-			
-		//	client.publish(topic, commond6);
-        });
- /* $("#StorageType").click(function(){
+		 client.publish(topic, commond6);
+		 
+  });       
+  $("#StorageType").click(function(){
 			 var x=document.getElementById("StorageType")
 		alert(x.selectedIndex)
 		//$("#garagepan").text(x.options[x.selectedIndex].text);
