@@ -160,16 +160,16 @@
         <div class="confighow">  
             <table width="100%">
 				<tr align="left" height="34px">
-					<td valign="left">湿度报值</td>
-					<td valign="left">烟雾浓度报警阀值</td>
+					<td valign="left"><span class = "StorageTypecls"> 湿度报值</span></td>
+					<td valign="left"><span class = "StorageTypecls">烟雾浓度报警阀值</span></td>
 					
 					
 				 </tr>	
 				
 				<tr align="left" height="34px">
 
-					<td ><span><INPUT  TYPE = "number" id = "SmokeAlarmThresholdid" VALUE= "50" min="0" max="999" maxlength="3" size="3"></span></td>
-					<td ><span><INPUT  TYPE = "number" id = "input_humidity_thr_id" VALUE= "50" min="0" max="999"maxlength="3" size="3"></span></td>
+					<td ><span><INPUT  class = "StorageTypecls"  TYPE = "number" id = "SmokeAlarmThresholdid" VALUE= "50" min="0" max="999" maxlength="3" size="3"></span></td>
+					<td ><span><INPUT   class = "StorageTypecls" TYPE = "number" id = "input_humidity_thr_id" VALUE= "50" min="0" max="999"maxlength="3" size="3"></span></td>
 
 					
                 </tr> 	   
@@ -343,7 +343,7 @@
 	var x=document.getElementById("StorageType")
 	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
 	var dht11_humidity_thr =$("#input_humidity_thr_id").val();
-	var fire_types=parseInt(x.selectedIndex+"1");
+	var fire_types=parseInt(x.selectedIndex+1);
 	
 	
 	var s1= '{"smoke_thr":';
@@ -413,9 +413,9 @@
 
 
 <script>
+
+
 /*
-
-
  $("#SmokeAlarmThresholdConfireid").click(function(){
   //var smokeval="20";
     //alert( $("#SmokeAlarmThresholdid").val());
@@ -423,7 +423,7 @@
 	var x=document.getElementById("StorageType")
 	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
 	var dht11_humidity_thr =$("#input_humidity_thr_id").val();
-	var fire_types=parseInt(x.selectedIndex);
+	var fire_types=parseInt(x.selectedIndex+1);
 	
 	
 	var s1= '{"smoke_thr":';
