@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <title>仓库环境状态10</title>
+    <title>仓库环境状态11</title>
     <style>
         *{margin:0px;padding:0px;}
         body{
@@ -269,7 +269,7 @@
 				$("#fire_type_id").text(fire_type);
 				$("#smoke_thr_id").text(smoke_thr);
 				
-				$("#dht11_humidity_thr_id").value(dht11_humidity_thr);
+				//$("#dht11_humidity_thr_id").value(dht11_humidity_thr);
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
               /* if(smokeval > $("#SmokeAlarmThresholdid").val()){
                     led_red();
@@ -286,10 +286,9 @@
 
 
         // 控制按钮显示的事件
-        $("#switchbtn").click(function() {
+               $("#switchbtn").click(function() {
             var topic = device_id+'/in';
             var commond;
-			var commond6;
             var swtimg = $("#switchbtn").attr("src");
             if("./image/03-turn-on.svg" == swtimg){
                 commond = '{"device_switch":false}';
@@ -300,8 +299,8 @@
                 $("#switchbtn").attr("src", "./image/03-turn-on.svg");
                 $("#switchspan").text("开");
             }
-
-            client.publish(topic, commond); 
+            client.publish(topic, commond);
+        });
 	/*		var x=document.getElementById("StorageType")
 	var SmokeAlarmThreshold=$("#SmokeAlarmThresholdid").val();
 	var dht11_humidity_thr =$("#dht11_humidity_thr_id").val();
@@ -324,7 +323,7 @@
 		// alert( commond6);
 			
 			//client.publish(topic, commond6);
-        });/*
+        /*
  // 确定按钮的事件
  
 		$("#SmokeAlarmThresholdConfireid").click(function(){
