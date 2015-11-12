@@ -68,7 +68,7 @@
         }
         .smokeshow{
             margin: 5px 12px;
-            height: 84px;
+            height: 154px;
             background-color: #FFFFFF;
             text-align: center;
             box-shadow: 3px 3px 3px #e1e1e1;
@@ -248,7 +248,9 @@
             // console.log('温度 ' +  msgjson.dht11_temperature);
             var tempval = msgjson.dht11_temperature;
 			var smokeval = msgjson.smoke;
-			smokeval = smokeval/"200";
+			var smoke_thr = msgjson.smoke_thr;
+			var dht11_humidity_thr= msgjson.dht11_humidity_thr;
+			var fire_type = msgjson.fire_type;
             // console.log('温度2 ' +  tempval);
             if("undefined" != typeof(tempval)){
                 // 显示温度
@@ -257,16 +259,18 @@
                 $("#humiid").text(msgjson.dht11_humidity+'%');
 				$("#stationNoid").text(msgjson.stationNo);
 				$("#smokeid").text(smokeval+"%");
+				$("#SmokeAlarmThresholdid").value(smoke_thr+"%");
+				//$("#dht11_humidity_thr").text(smokeval+"%");
                 // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
-                if(smokeval > $("#SmokeAlarmThresholdid").val()){
-                    led_red();
-                    $("#rgbimgid").attr("src", "./image/02-red.svg");
-					$("#stateid").text("烟雾(可燃气体)浓度过高");
-                }else {
-                    led_green();
-                    $("#rgbimgid").attr("src", "./image/02-green.svg");
-					$("#stateid").text("正常");
-                }
+               // if(smokeval > $("#SmokeAlarmThresholdid").val()){
+                 //   led_red();
+                  //  $("#rgbimgid").attr("src", "./image/02-red.svg");
+				//	$("#stateid").text("烟雾(可燃气体)浓度过高");
+               // }else {
+                //    led_green();
+                //    $("#rgbimgid").attr("src", "./image/02-green.svg");
+				//	$("#stateid").text("正常");
+                
                 
             }
         }
@@ -286,6 +290,9 @@
                 $("#switchbtn").attr("src", "./image/03-turn-on.svg");
                 $("#switchspan").text("开");
             }
+			 commond = '{"smoke_thr":$("#SmokeAlarmThresholdid").value()}';
+			
+			
             client.publish(topic, commond);
         });/*
  // 确定按钮的事件
